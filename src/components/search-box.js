@@ -31,7 +31,7 @@ class SearchBox extends Component {
                         </Col>
                         <Col md={9}>
                             <InputGroup>
-                                <Input placeholder="Nunca dejes de buscar" />
+                                <Input placeholder="Nunca dejes de buscar" style={{border: 0}} />
                                 <InputGroupAddon addonType="append">
                                     <Button style={{backgroundColor: '#EEEEEE', border: 0}}>
                                         <img src={searchIcon} alt="SEARCH_ICON" />

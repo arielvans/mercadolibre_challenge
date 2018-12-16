@@ -10,6 +10,9 @@ class App extends Component {
         <header className="App-header">
           <SearchBox />
         </header>
+        <main className="App-main">
+
+        </main>
       </div>
     );
   }
