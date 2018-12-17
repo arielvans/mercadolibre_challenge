@@ -16,7 +16,6 @@ class SearchBox extends Component {
         super(props)
         this.props = props;
         this.state = {
-            init: 0
         }
         
     }
@@ -29,7 +28,7 @@ class SearchBox extends Component {
                         <Col md={1}>
                             <img src={logoImg} alt="LOGO" />
                         </Col>
-                        <Col md={9}>
+                        <Col md={10}>
                             <InputGroup>
                                 <Input placeholder="Nunca dejes de buscar" style={{border: 0}} />
                                 <InputGroupAddon addonType="append">

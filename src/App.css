@@ -1,3 +1,10 @@
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+
 .App {
   text-align: center;
 }
@@ -20,7 +27,8 @@
 
 .App-main {
   background-color: #EEEEEE;
-  height: 100%vh;
+  height: 100vh!important;
+  display: flex;
 }
 
 .App-link {
@@ -35,6 +43,8 @@
     transform: rotate(360deg);
   }
 }
+
+/***** BREADCRUMBS *****/
 
 /** remove glow from input **/
 textarea:focus,
@@ -57,3 +67,15 @@ input[type="color"]:focus,
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #fff;
   outline: 0 none;
 }
+
+.price-shipping {
+  display: flex;
+}
+
+.breadcrumbs {
+  margin: 10px 0;
+  font-size: 13px;
+  color: rgb(150, 150, 150);
+}
+
+
