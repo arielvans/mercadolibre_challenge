@@ -11,9 +11,16 @@ class Results extends Component {
     constructor(props) {
         super(props)
         this.props = props;
-        this.state = {
+        this.state = { 
+            results: null
         }
+    }
 
+    componentDidMount() {
+        this.setState({results: this.props.results})
+        setTimeout(() => {
+            console.log(this.state)
+        })
     }
 
     render() {

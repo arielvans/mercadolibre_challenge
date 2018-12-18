@@ -1,11 +1,15 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
+import webservice from '../utils/webservice';
+import axios from '../utils/axios';
+
 import {
     Row,
     Col,
     Input,
     Button,
     InputGroup,
-    InputGroupAddon
+    InputGroupAddon,
+    Form
 } from 'reactstrap';
 import logoImg from '../assets/Logo_ML.png';
 import searchIcon from '../assets/ic_Search.png';
@@ -16,8 +20,26 @@ class SearchBox extends Component {
         super(props)
         this.props = props;
         this.state = {
+            searchValue: "",
+            currentSearchArray: null
         }
+    }
 
+    onSearchHandle = (event) => {
+        event.preventDefault();
+    }
+    
+    searchArticle = (searchInput) => {
+        return axios.post("/search?q=" + searchInput, { headers: this.getHeaders() }).then(response => response.data);
+      }
+
+    onSearchHandleChange = (value) => {
+        this.setState({ searchValue: value});
+        setTimeout(() => {console.log(this.state)})
+        webservice.searchArticle(value).then(response => {
+            console.log("response: ", response.results)
+            this.setState({currentSearchArray: response.results});
+        })
     }
 
     render() {
@@ -29,18 +51,25 @@ class SearchBox extends Component {
                             <img src={logoImg} alt="LOGO" />
                         </Col>
                         <Col md={{ size: 7, offset: 0 }}>
-                            <InputGroup>
-                                <Input placeholder="Nunca dejes de buscar" style={{ border: 0 }} />
-                                <InputGroupAddon addonType="append">
-                                    <Button style={{ backgroundColor: '#EEEEEE', border: 0 }}>
-                                        <img src={searchIcon} alt="SEARCH_ICON" />
-                                    </Button>
-                                </InputGroupAddon>
-                            </InputGroup>
+                            <Form noValidate onSubmit={this.onSearchHandle.bind(this)}>
+                                <InputGroup>
+                                    <Input 
+                                        className="search-input" 
+                                        placeholder="Nunca dejes de buscar" 
+                                        value={this.state.searchValue.value}
+                                        onChange={event => this.onSearchHandleChange(event.target.value)}
+                                    />
+                                    <InputGroupAddon addonType="append">
+                                        <Button className="search-button">
+                                            <img src={searchIcon} alt="SEARCH_ICON" />
+                                        </Button>
+                                    </InputGroupAddon>
+                                </InputGroup>
+                            </Form>
                         </Col>
                     </Row>
                 </div>
-            </React.Fragment>
+            </React.Fragment >
         );
     }
 }

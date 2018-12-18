@@ -7,13 +7,14 @@ import {
     CardBody
 } from 'reactstrap';
 
+
 class ProductDescription extends Component {
     constructor(props) {
         super(props)
         this.props = props;
         this.state = {
+            init: 0
         }
-
     }
 
     render() {
