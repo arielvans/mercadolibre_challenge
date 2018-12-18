@@ -5,43 +5,14 @@ body {
   min-height: 100%;
 }
 
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
+.app-header {
   background-color: #FEE600;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
   padding: 10px;
 }
 
-.App-main {
+.app-main {
   background-color: #EEEEEE;
-  height: 100vh!important;
-  display: flex;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  height: 100%!important;
 }
 
 /***** BREADCRUMBS *****/
@@ -70,6 +41,10 @@ input[type="color"]:focus,
 
 .price-shipping {
   display: flex;
+}
+
+.product-description-main {
+  display: block;
 }
 
 .breadcrumbs {

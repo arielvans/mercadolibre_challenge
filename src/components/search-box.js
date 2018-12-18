@@ -17,29 +17,29 @@ class SearchBox extends Component {
         this.props = props;
         this.state = {
         }
-        
+
     }
 
     render() {
         return (
             <React.Fragment>
-                <Col md={10}>
+                <div className="app-header">
                     <Row>
-                        <Col md={1}>
+                        <Col md={{ size: 1, offset: 2 }}>
                             <img src={logoImg} alt="LOGO" />
                         </Col>
-                        <Col md={10}>
+                        <Col md={{ size: 7, offset: 0 }}>
                             <InputGroup>
-                                <Input placeholder="Nunca dejes de buscar" style={{border: 0}} />
+                                <Input placeholder="Nunca dejes de buscar" style={{ border: 0 }} />
                                 <InputGroupAddon addonType="append">
-                                    <Button style={{backgroundColor: '#EEEEEE', border: 0}}>
+                                    <Button style={{ backgroundColor: '#EEEEEE', border: 0 }}>
                                         <img src={searchIcon} alt="SEARCH_ICON" />
                                     </Button>
                                 </InputGroupAddon>
                             </InputGroup>
                         </Col>
                     </Row>
-                </Col>
+                </div>
             </React.Fragment>
         );
     }
