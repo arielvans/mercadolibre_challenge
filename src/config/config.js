@@ -4,9 +4,9 @@ const configLocal = {
 };
 
 //Set base url for production
-const configProduccion = {
-    baseURL: "",
-};
+// const configProduccion = {
+//     baseURL: "",
+// };
 
 const config = configLocal;
 

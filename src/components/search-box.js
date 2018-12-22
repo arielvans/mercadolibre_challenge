@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import webservice from '../utils/webservice';
 import axios from '../utils/axios';
-
 import {
     Row,
     Col,
@@ -13,33 +12,35 @@ import {
 } from 'reactstrap';
 import logoImg from '../assets/Logo_ML.png';
 import searchIcon from '../assets/ic_Search.png';
-
+import eventsHub from '../utils/eventshub';
+import qs from 'qs';
 
 class SearchBox extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.props = props;
-        this.state = {
-            searchValue: "",
-            currentSearchArray: null
-        }
+        this.onSearchHandle = this.onSearchHandle.bind(this);
+    }
+
+    state = {
+        searchValue: { value: qs.parse(this.props.search, { ignoreQueryPrefix: true }).search },
+        currentSearchArray: null
+    }
+
+    searchArticle = (searchInput) => {
+        return axios.post("/search?q=" + searchInput, { headers: this.getHeaders() }).then(response => response.data);
     }
 
     onSearchHandle = (event) => {
         event.preventDefault();
+        webservice.searchArticle(this.state.searchValue).then(response => {
+            eventsHub.setCurrentSearch(response.results);
+            this.props.history.push(`/items?search=${this.state.searchValue}`);
+        })
     }
-    
-    searchArticle = (searchInput) => {
-        return axios.post("/search?q=" + searchInput, { headers: this.getHeaders() }).then(response => response.data);
-      }
 
     onSearchHandleChange = (value) => {
-        this.setState({ searchValue: value});
-        setTimeout(() => {console.log(this.state)})
-        webservice.searchArticle(value).then(response => {
-            console.log("response: ", response.results)
-            this.setState({currentSearchArray: response.results});
-        })
+        this.setState({ searchValue: value });
     }
 
     render() {
@@ -51,11 +52,11 @@ class SearchBox extends Component {
                             <img src={logoImg} alt="LOGO" />
                         </Col>
                         <Col md={{ size: 7, offset: 0 }}>
-                            <Form noValidate onSubmit={this.onSearchHandle.bind(this)}>
+                            <Form noValidate name="searchForm" onSubmit={this.onSearchHandle}>
                                 <InputGroup>
-                                    <Input 
-                                        className="search-input" 
-                                        placeholder="Nunca dejes de buscar" 
+                                    <Input
+                                        className="search-input"
+                                        placeholder="Nunca dejes de buscar"
                                         value={this.state.searchValue.value}
                                         onChange={event => this.onSearchHandleChange(event.target.value)}
                                     />
