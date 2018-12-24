@@ -9,7 +9,7 @@ class ArticleDescription extends Component {
             <React.Fragment>
                 <div className="app-main">
                     <SearchBox />
-                    <ProductDescription />
+                    <ProductDescription props={this.props} />
                 </div>
             </React.Fragment>
         );

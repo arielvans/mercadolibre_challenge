@@ -12,7 +12,11 @@ class WebService {
   }
 
   searchArticle = (searchInput) => {
-    return axios.post("/search?q=" + searchInput, { headers: this.getHeaders() }).then(response => response.data);
+    return axios.post("/sites/MLA/search?q=" + searchInput, { headers: this.getHeaders() }).then(response => response.data);
+  }
+
+  searchArticleById = (productId) => {
+    return axios.get("/items/" + productId, { headers: this.getHeaders() }).then(response => response.data);
   }
 
   getHeaders() {

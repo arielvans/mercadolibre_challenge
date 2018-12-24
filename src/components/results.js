@@ -59,7 +59,7 @@ class Results extends Component {
             <Card md="12">
               <CardBody>
                 <Row>
-                  {this.state.productsArray.map((item, i) => {
+                  {this.state.productsArray.slice(0, 4).map((item, i) => {
                     return (
                       <Col md={12}>
                         <div className="d-flex" onClick={() => this.accessProductDescription(item)}>

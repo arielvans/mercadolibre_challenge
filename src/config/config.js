@@ -1,12 +1,6 @@
-// local url
 const configLocal = {
-    baseURL: "https://api.mercadolibre.com/sites/MLA/",
+    baseURL: "https://api.mercadolibre.com",
 };
-
-//Set base url for production
-// const configProduccion = {
-//     baseURL: "",
-// };
 
 const config = configLocal;
 

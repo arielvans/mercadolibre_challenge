@@ -7,6 +7,7 @@ import {
 	CardBody
 } from 'reactstrap';
 import eventshub from '../utils/eventshub';
+import webService from '../utils/webservice';
 
 class ProductDescription extends Component {
 
@@ -14,12 +15,19 @@ class ProductDescription extends Component {
 		productObject: {}
 	}
 
-	componentDidMount() {
-		this.onCurrentProductDescriptionChange = eventshub.onCurrentArticleDescriptionChange()
-			.subscribe(value => {
-				this.setState({ productObject: value });
-				setTimeout(() => { console.log("product object: ", this.state.productObject) })
+	searchArticleDescriptionOnInit() {
+		let searchId = this.props.props.location.pathname
+		.substr(this.props.props.location.pathname.lastIndexOf('/') + 1);
+		webService.searchArticleById(searchId).then(response => {
+			this.setState({ productObject: response });
+		})
+	}
 
+	componentDidMount() {
+		this.searchArticleDescriptionOnInit();
+		this.onCurrentProductDescriptionChange = eventshub.onCurrentArticleDescriptionChange()
+			.subscribe(response => {
+				this.setState({ productObject: response });
 			});
 	}
 
