@@ -11,19 +11,14 @@ class WebService {
 
   }
 
-  searchArticle(searchInput) {
-    return axios.get("/search?q=" + searchInput, { headers: this.getHeaders() }).then(response => response.data);
+  searchArticle = (searchInput) => {
+    return axios.post("/search?q=" + searchInput, { headers: this.getHeaders() }).then(response => response.data);
   }
 
   getHeaders() {
     let headers = {
       ...this._headers,
     };
-
-    //in case loggin is added
-    // if (this._auth.getToken()) {
-    //   headers.Authorization = 'JWT ' + this.getToken();
-    // }
     return headers;
   }
 }

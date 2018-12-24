@@ -24,6 +24,6 @@ class EventsHub {
     }
 }
 
-const eventsHub = new EventsHub();
+const eventshub = new EventsHub();
 
-export default eventsHub;
+export default eventshub;
