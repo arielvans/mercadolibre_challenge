@@ -5,7 +5,7 @@ import {
   Card,
   CardBody
 } from 'reactstrap';
-// import shippingIcon from '../assets/ic_shipping.png';
+import shippingIcon from '../assets/ic_shipping.png';
 import eventshub from '../utils/eventshub';
 import webService from '../utils/webservice';
 
@@ -67,7 +67,10 @@ class Results extends Component {
                             <img src={item.thumbnail} alt="THUMBNAIL_PRODUCT" />
                           </div>
                           <div className="p-3">
-                            <h3>${item.price}</h3>
+                            <div className="d-inline-flex">
+                              <h3>${item.price}</h3>
+                              {item.shipping.free_shipping && <img src={shippingIcon} alt="FREE_SHIPPING_ICON" />}
+                            </div>
                             <p>{item.title}</p>
                           </div>
                           <div className="p-3 ml-auto">{item.address.city_name}</div>
