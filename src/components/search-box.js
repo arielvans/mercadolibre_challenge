@@ -36,11 +36,18 @@ class SearchBox extends Component {
         webservice.searchArticle(this.state.searchValue).then(response => {
             eventsHub.setCurrentSearch(response.results);
             this.props.history.push(`/items?search=${this.state.searchValue}`);
+
+            //TODO: Resolve API search filters content
+            // eventsHub.setCurrentFilters(response.filters[0].values[0].name);
         })
     }
 
     onSearchHandleChange = (value) => {
         this.setState({ searchValue: value });
+    }
+
+    backToIndex = () => {
+        this.props.history.push('/');
     }
 
     render() {
@@ -49,7 +56,7 @@ class SearchBox extends Component {
                 <div className="app-header">
                     <Row>
                         <Col md={{ size: 1, offset: 2 }}>
-                            <img src={logoImg} alt="LOGO" />
+                            <img src={logoImg} onClick={this.backToIndex} alt="LOGO" />
                         </Col>
                         <Col md={{ size: 7, offset: 0 }}>
                             <Form noValidate name="searchForm" onSubmit={this.onSearchHandle}>
@@ -57,7 +64,7 @@ class SearchBox extends Component {
                                     <Input
                                         className="search-input"
                                         placeholder="Nunca dejes de buscar"
-                                        value={this.state.searchValue.value}
+                                        defaultValue={this.state.searchValue.value}
                                         onChange={event => this.onSearchHandleChange(event.target.value)}
                                     />
                                     <InputGroupAddon addonType="append">

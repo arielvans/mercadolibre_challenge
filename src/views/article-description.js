@@ -8,7 +8,7 @@ class ArticleDescription extends Component {
         return (
             <React.Fragment>
                 <div className="app-main">
-                    <SearchBox />
+                    <SearchBox history={this.props.history} />
                     <ProductDescription props={this.props} />
                 </div>
             </React.Fragment>
