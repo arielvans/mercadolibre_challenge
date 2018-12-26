@@ -9,8 +9,10 @@ class Home extends Component {
         return (
             <React.Fragment>
                 <div className="app-main">
-                    <SearchBox search={this.props.location.search} history={this.props.history} />
-                    <Results search={this.props.location.search} history={this.props.history}/>
+                    <div className="content">
+                        <SearchBox search={this.props.location.search} history={this.props.history} />
+                        <Results search={this.props.location.search} history={this.props.history} />
+                    </div>
                 </div>
             </React.Fragment>
         );

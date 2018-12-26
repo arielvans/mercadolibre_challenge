@@ -55,10 +55,10 @@ class SearchBox extends Component {
             <React.Fragment>
                 <div className="app-header">
                     <Row>
-                        <Col md={{ size: 1, offset: 2 }}>
+                        <Col md={{ size: 1, offset: 2 }} sm={{ size: 1 }} xs={{ size: 1 }}>
                             <img src={logoImg} onClick={this.backToIndex} alt="LOGO" />
                         </Col>
-                        <Col md={{ size: 7, offset: 0 }}>
+                        <Col md={{ size: 7, offset: 0 }} sm={{ size: 10 }} xs={{ size: 9, offset: 1 }}>
                             <Form noValidate name="searchForm" onSubmit={this.onSearchHandle}>
                                 <InputGroup>
                                     <Input
